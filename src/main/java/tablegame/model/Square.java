@@ -1,2 +1,8 @@
-package tablegame.model;public class Square {
+package tablegame.model;
+
+public enum Square {
+
+    NONE,
+    BLACK,
+    WHITE
 }
