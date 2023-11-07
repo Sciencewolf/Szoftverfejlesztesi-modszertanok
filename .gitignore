@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+list.txt
+=======
 
 # Created by https://www.toptal.com/developers/gitignore/api/maven,intellij+all,eclipse,netbeans
 # Edit at https://www.toptal.com/developers/gitignore?templates=maven,intellij+all,eclipse,netbeans
@@ -184,3 +187,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+>>>>>>> ad9398c545803de04b99bc0d4dcb1bc66f76def6
