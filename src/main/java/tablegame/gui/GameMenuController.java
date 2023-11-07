@@ -56,6 +56,7 @@ public class GameMenuController {
             stage.setScene(scene);
             stage.show();
 
+            // added action for info button on main page
             informationButton.setOnAction(e -> {
                 try {
                     openGameInfo();
@@ -66,6 +67,8 @@ public class GameMenuController {
         }
     }
 
+
+    // Game Info window
     @FXML
     private void openGameInfo() throws IOException {
         FXMLLoader fxml = new FXMLLoader(getClass().getResource("/fxml/info.fxml"));
@@ -81,6 +84,7 @@ public class GameMenuController {
         stage.show();
     }
 
+    // close Game Info window on close button click
     @FXML
     private void closeGameInfo() {
         Stage stage = (Stage) closeGameInfo.getScene().getWindow();
