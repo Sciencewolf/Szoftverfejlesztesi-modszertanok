@@ -57,6 +57,13 @@ public class BoardGameModel {
         return getSquare(i,j) == Square.NONE;
     }
 
+    /*TODO
+        Kerzdetledes move metódus
+     */
+    public void move(int i, int j) {
+        setSquare(i, j, Square.WHITE);
+    }
+
 
     public String toString() {
         var Sb = new StringBuilder();
