@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="526.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tablegame.gui.GameMenuController">
     <children>
-        <Button fx:id="startGameButton" layoutX="197.0" layoutY="308.0" mnemonicParsing="false" text="Start Game" onAction="#openGameSceneButton" />
-        <TextField fx:id="nameTextFieldPlayerOne" layoutX="162.0" layoutY="207.0" text="name" />
-        <TextField fx:id="nameTextFieldPlayerTwo" layoutX="162.0" layoutY="250.0" text="name" />
+        <Button fx:id="startGameButton" layoutX="197.0" layoutY="308.0" mnemonicParsing="false" onAction="#openGameSceneButton" text="Start Game" />
+        <TextField fx:id="nameTextFieldPlayerOne" layoutX="162.0" layoutY="207.0" />
+        <TextField fx:id="nameTextFieldPlayerTwo" layoutX="162.0" layoutY="250.0" />
         <Label layoutX="163.0" layoutY="112.0" text="Table Game">
             <font>
                 <Font size="29.0" />
@@ -26,10 +26,11 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="errorLabel" contentDisplay="CENTER" layoutX="182.0" layoutY="174.0" prefHeight="19.0" prefWidth="110.0" textFill="#bf0d0d">
+        <Label fx:id="errorLabelText" contentDisplay="CENTER" layoutX="182.0" layoutY="174.0" prefHeight="19.0" prefWidth="110.0" textFill="#bf0d0d">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
+      <Button fx:id="informationButton" layoutX="431.0" layoutY="14.0" mnemonicParsing="false" text="Info" textAlignment="CENTER" />
     </children>
 </AnchorPane>
