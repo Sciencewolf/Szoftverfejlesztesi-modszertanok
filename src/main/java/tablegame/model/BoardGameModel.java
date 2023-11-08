@@ -75,4 +75,14 @@ public class BoardGameModel {
         }
         return Sb.toString();
     }
+
+
+    public static void main(String[] args) {
+        BoardGameModel model = new BoardGameModel();
+
+        System.out.println(model);
+
+        model.move(1,1);
+        System.out.println(model);
+    }
 }
