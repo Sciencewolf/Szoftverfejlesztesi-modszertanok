@@ -12,6 +12,8 @@ public class BoardGameModel {
 
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_SIZE][BOARD_SIZE];
 
+    private ReadOnlyObjectWrapper<Player> current_player = new ReadOnlyObjectWrapper<Player>(Player.PLAYER_1);
+
     private ArrayList<ArrayList<Integer>> sub_board = new ArrayList<>();
 
     public enum Player {
@@ -50,7 +52,6 @@ public class BoardGameModel {
         return board[i][j].getReadOnlyProperty();
     }
 
-
     public Square getSquare(Position p) {
         return board[p.row()][p.col()].get();
     }
@@ -63,11 +64,27 @@ public class BoardGameModel {
         return getSquare(p) == Square.NONE;
     }
 
-    /*TODO
-        Kerzdetledes move metódus
-     */
-    public void move(Position p) {
-        setSquare(p, Square.WHITE);
+    public Player getPlayer() {
+        return  current_player.get();
+    }
+    public void changePlayers() {
+        if (getPlayer() == Player.PLAYER_1) {
+            current_player.set(Player.PLAYER_2);
+        } else {
+            current_player.set(Player.PLAYER_1);
+        }
+    }
+
+    public  Boolean canMove(Position p) {
+        return isEmpty(p);
+    }
+
+    public void move(Position pos) {
+        switch (getPlayer()) {
+            case PLAYER_1 -> setSquare(pos, Square.BLACK);
+            case PLAYER_2 -> setSquare(pos, Square.WHITE);
+        }
+        changePlayers();
     }
 
 
@@ -88,7 +105,10 @@ public class BoardGameModel {
 
         System.out.println(model);
         var pos = new Position(1,1);
+        var pos2 = new Position(1,2);
         model.move(pos);
+        System.out.println(model);
+        model.move(pos2);
         System.out.println(model);
     }
 }
