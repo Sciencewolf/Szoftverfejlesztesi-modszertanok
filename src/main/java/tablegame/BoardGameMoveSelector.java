@@ -1,6 +1,7 @@
 package tablegame;
 
 import tablegame.model.BoardGameModel;
+import tablegame.model.Position;
 
 public class BoardGameMoveSelector {
 
@@ -13,9 +14,9 @@ public class BoardGameMoveSelector {
     }
 
 
-    public void select(int i, int j) {
-        if (model.isEmpty(i,j)) {
-            model.move(i,j);
+    public void select(Position p) {
+        if (model.isEmpty(p)) {
+            model.move(p);
         }
     }
 }

@@ -2,6 +2,7 @@ package tablegame.model;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,11 @@ public class BoardGameModel {
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_SIZE][BOARD_SIZE];
 
     private ArrayList<ArrayList<Integer>> sub_board = new ArrayList<>();
+
+    public enum Player {
+            PLAYER_1,
+            PLAYER_2
+    }
     private void BoardInitializer() {
         for (int i = 0; i < BOARD_SIZE; i++) {
             ArrayList<Integer> row = new ArrayList<>();
@@ -45,23 +51,23 @@ public class BoardGameModel {
     }
 
 
-    public Square getSquare(int i, int j) {
-        return board[i][j].get();
+    public Square getSquare(Position p) {
+        return board[p.row()][p.col()].get();
     }
 
-    private void setSquare(int i, int j, Square square) {
-        board[i][j].set(square);
+    private void setSquare(Position p, Square square) {
+        board[p.row()][p.col()].set(square);
     }
 
-    public boolean isEmpty(int i, int j) {
-        return getSquare(i,j) == Square.NONE;
+    public boolean isEmpty(Position p) {
+        return getSquare(p) == Square.NONE;
     }
 
     /*TODO
         Kerzdetledes move metódus
      */
-    public void move(int i, int j) {
-        setSquare(i, j, Square.WHITE);
+    public void move(Position p) {
+        setSquare(p, Square.WHITE);
     }
 
 
@@ -81,8 +87,8 @@ public class BoardGameModel {
         BoardGameModel model = new BoardGameModel();
 
         System.out.println(model);
-
-        model.move(1,1);
+        var pos = new Position(1,1);
+        model.move(pos);
         System.out.println(model);
     }
 }
