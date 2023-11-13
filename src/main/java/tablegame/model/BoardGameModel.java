@@ -2,6 +2,7 @@ package tablegame.model;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,14 @@ public class BoardGameModel {
 
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_SIZE][BOARD_SIZE];
 
+    private ReadOnlyObjectWrapper<Player> current_player = new ReadOnlyObjectWrapper<Player>(Player.PLAYER_1);
+
     private ArrayList<ArrayList<Integer>> sub_board = new ArrayList<>();
+
+    public enum Player {
+            PLAYER_1,
+            PLAYER_2
+    }
     private void BoardInitializer() {
         for (int i = 0; i < BOARD_SIZE; i++) {
             ArrayList<Integer> row = new ArrayList<>();
@@ -44,24 +52,39 @@ public class BoardGameModel {
         return board[i][j].getReadOnlyProperty();
     }
 
-
-    public Square getSquare(int i, int j) {
-        return board[i][j].get();
+    public Square getSquare(Position p) {
+        return board[p.row()][p.col()].get();
     }
 
-    private void setSquare(int i, int j, Square square) {
-        board[i][j].set(square);
+    private void setSquare(Position p, Square square) {
+        board[p.row()][p.col()].set(square);
     }
 
-    public boolean isEmpty(int i, int j) {
-        return getSquare(i,j) == Square.NONE;
+    public boolean isEmpty(Position p) {
+        return getSquare(p) == Square.NONE;
     }
 
-    /*TODO
-        Kerzdetledes move metódus
-     */
-    public void move(int i, int j) {
-        setSquare(i, j, Square.WHITE);
+    public Player getPlayer() {
+        return  current_player.get();
+    }
+    public void changePlayers() {
+        if (getPlayer() == Player.PLAYER_1) {
+            current_player.set(Player.PLAYER_2);
+        } else {
+            current_player.set(Player.PLAYER_1);
+        }
+    }
+
+    public  Boolean canMove(Position p1, Position p2) {
+        return (isEmpty(p1) && p1.equals(p2));
+    }
+
+    public void move(Position pos) {
+        switch (getPlayer()) {
+            case PLAYER_1 -> setSquare(pos, Square.BLACK);
+            case PLAYER_2 -> setSquare(pos, Square.WHITE);
+        }
+        changePlayers();
     }
 
 
@@ -81,8 +104,11 @@ public class BoardGameModel {
         BoardGameModel model = new BoardGameModel();
 
         System.out.println(model);
-
-        model.move(1,1);
+        var pos = new Position(1,1);
+        var pos2 = new Position(1,2);
+        model.move(pos);
+        System.out.println(model);
+        model.move(pos2);
         System.out.println(model);
     }
 }
