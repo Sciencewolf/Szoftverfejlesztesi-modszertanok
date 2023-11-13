@@ -75,8 +75,8 @@ public class BoardGameModel {
         }
     }
 
-    public  Boolean canMove(Position p) {
-        return isEmpty(p);
+    public  Boolean canMove(Position p1, Position p2) {
+        return (isEmpty(p1) && p1.equals(p2));
     }
 
     public void move(Position pos) {
