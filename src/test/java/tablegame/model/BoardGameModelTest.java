@@ -22,5 +22,15 @@ class BoardGameModelTest {
         assertTrue(model.isEmpty(new Position(4, 4)));
         //assertFalse(model.isEmpty(new Position(0, 0))); not passed
     }
+//Testing the move function
+    @Test
+    void testMove() {
+        BoardGameModel model = new BoardGameModel();
+        Position pos = new Position(1, 1);
+        model.move(pos);
+        assertEquals(Square.BLACK, model.getSquare(pos));
+        assertEquals(BoardGameModel.Player.PLAYER_2, model.getPlayer());
+    }
 
 }
+
