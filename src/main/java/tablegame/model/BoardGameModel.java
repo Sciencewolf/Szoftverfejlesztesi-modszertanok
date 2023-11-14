@@ -98,6 +98,19 @@ public class BoardGameModel {
         }
         return Sb.toString();
     }
+    private boolean checkTiles(Position p) {
+        if(getSquare(p) == getSquare(new Position(p.row(),p.col()+1)) || getSquare(p) == getSquare(new Position(p.row(),p.col()-1))
+            || getSquare(p) == getSquare(new Position(p.row()+1,p.col())) || getSquare(p) == getSquare(new Position(p.row()-1,p.col())))
+            return true;
+        return false;
+    }
+    public Square goalCheck(Position p){
+        if(checkTiles(p))
+            if(getSquare(p) == Square.WHITE)
+                return Square.BLACK;
+            else return Square.WHITE;
+        return Square.NONE;
+    }
 
 
     public static void main(String[] args) {
