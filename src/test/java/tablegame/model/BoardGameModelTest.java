@@ -32,5 +32,12 @@ class BoardGameModelTest {
         assertEquals(BoardGameModel.Player.PLAYER_2, model.getPlayer());
     }
 
+    //Testing if the moving is possible to the definied position.
+    @Test
+    void testCanMove() {
+        BoardGameModel model = new BoardGameModel();
+        assertTrue(model.canMove(new Position(1, 1), new Position(1, 1)));
+        assertFalse(model.canMove(new Position(0, 0), new Position(1, 1)));
+    }
 }
 
