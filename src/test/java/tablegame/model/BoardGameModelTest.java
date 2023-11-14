@@ -6,6 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 class BoardGameModelTest {
 
+    BoardGameModel model;
+    //Minden teszt előtt csinál egy uj modelt
+    @BeforeEach
+    public void init(){
+        model = new BoardGameModel();
+    }
 
 
 
