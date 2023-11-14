@@ -98,9 +98,15 @@ public class BoardGameModel {
         }
         return Sb.toString();
     }
+    private boolean checkEquality(Position p1 , Position p2) {
+        if (p2.row() == -1 || p2.col() == -1) {
+            return false;
+        }
+        return getSquare(p1) == getSquare(p2);
+    }
     private boolean checkTiles(Position p) {
-        if(getSquare(p) == getSquare(new Position(p.row(),p.col()+1)) || getSquare(p) == getSquare(new Position(p.row(),p.col()-1))
-            || getSquare(p) == getSquare(new Position(p.row()+1,p.col())) || getSquare(p) == getSquare(new Position(p.row()-1,p.col())))
+        if(checkEquality(p, new Position(p.row(), p.col()+1)) || checkEquality(p, new Position(p.row(), p.col()-1))
+                || checkEquality(p, new Position(p.row()+1, p.col())) || checkEquality(p, new Position(p.row()-1, p.col())))
             return true;
         return false;
     }

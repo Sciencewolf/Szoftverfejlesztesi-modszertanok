@@ -109,12 +109,18 @@ public class BoardGameMoveSelector {
         selector.makeMove();
         System.out.println(model);
 
-        var pos2 = new Position(1,2);
+        var pos2 = new Position(2,2);
         selector.select(pos2);
         System.out.println(model);
         selector.select(pos2);
         System.out.println(model);
         selector.makeMove();
         System.out.println(model);
+        var pos3 = new Position(0,1);
+        selector.select(pos3);
+        selector.select(pos3);
+        selector.makeMove();
+        System.out.println(model);
+        System.out.println(model.goalCheck(pos3));
     }
 }
