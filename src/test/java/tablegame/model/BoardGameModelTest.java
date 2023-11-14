@@ -14,5 +14,13 @@ class BoardGameModelTest {
     }
 
 
+//Testing the is empty function
+    @Test
+    void testIsEmpty() {
+        BoardGameModel model = new BoardGameModel();
+        assertTrue(model.isEmpty(new Position(1, 1)));
+        assertTrue(model.isEmpty(new Position(4, 4)));
+        //assertFalse(model.isEmpty(new Position(0, 0))); not passed
+    }
 
 }
