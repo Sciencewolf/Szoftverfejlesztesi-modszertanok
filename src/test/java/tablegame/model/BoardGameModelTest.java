@@ -39,5 +39,14 @@ class BoardGameModelTest {
         assertTrue(model.canMove(new Position(1, 1), new Position(1, 1)));
         assertFalse(model.canMove(new Position(0, 0), new Position(1, 1)));
     }
+
+    //Get the specified player
+    @Test
+    void testGetPlayer() {
+        BoardGameModel model = new BoardGameModel();
+        assertEquals(BoardGameModel.Player.PLAYER_1, model.getPlayer());
+    }
+
+
 }
 
