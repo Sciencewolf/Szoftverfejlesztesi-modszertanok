@@ -33,6 +33,12 @@ public class BoardGameMoveSelectorTest {
         assertEquals(false, selector.isReadyToMove());
     }
 
-
+    @Test
+    public void isReadyToMoveWhenReadyToMove() {
+        System.out.println(selector.getPhase());
+        selector.select(new Position(2, 2));
+        selector.confirmSelect(new Position(2, 2));
+        assertEquals(true, selector.isReadyToMove());
+    }
 }
 
