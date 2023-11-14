@@ -38,6 +38,9 @@ public class GameMenuController {
     private Button closeGameInfo;
 
     @FXML
+    private Button statsButton;
+
+    @FXML
     private Button showScoreBoardButton;
 
     @FXML
@@ -61,6 +64,15 @@ public class GameMenuController {
                 try {
                     openGameInfo();
                 } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+
+            // onClick open Stats Window
+            statsButton.setOnAction(e -> {
+                try {
+                    openStatsWindow();
+                }catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
             });
@@ -89,5 +101,16 @@ public class GameMenuController {
     private void closeGameInfo() {
         Stage stage = (Stage) closeGameInfo.getScene().getWindow();
         stage.close();
+    }
+
+    // Stats Window
+    @FXML
+    private void openStatsWindow() throws IOException{
+        try {
+            GameStats gs = new GameStats();
+            gs.openStatsWindow();
+        }catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

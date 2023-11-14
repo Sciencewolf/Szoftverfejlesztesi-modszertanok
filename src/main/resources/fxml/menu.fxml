@@ -32,5 +32,6 @@
             </font>
         </Label>
       <Button fx:id="informationButton" layoutX="431.0" layoutY="14.0" mnemonicParsing="false" text="Info" textAlignment="CENTER" onAction="#openGameInfo"/>
+        <Button fx:id="statsButton" layoutY="10" layoutX="14" onAction="#openStatsWindow" textAlignment="CENTER" text="Statistics"/>
     </children>
 </AnchorPane>

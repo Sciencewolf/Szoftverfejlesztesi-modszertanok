@@ -8,7 +8,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.Stats"
+            fx:controller="tablegame.gui.GameStats"
             prefHeight="400.0" prefWidth="600.0">
+
+    <Button fx:id="closeStatsWindow" layoutX="400" layoutY="390" text="Close" onAction="#closeStatsWindow"/>
 
 </AnchorPane>
