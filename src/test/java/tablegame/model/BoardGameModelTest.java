@@ -47,6 +47,13 @@ class BoardGameModelTest {
         assertEquals(BoardGameModel.Player.PLAYER_1, model.getPlayer());
     }
 
+    //Get the square
+    @Test
+    void testGetSquare() {
+        BoardGameModel model = new BoardGameModel();
+        assertEquals(Square.NONE, model.getSquare(new Position(0, 0)));
+        assertEquals(Square.NONE, model.getSquare(new Position(3, 3)));
+    }
 
 }
 
