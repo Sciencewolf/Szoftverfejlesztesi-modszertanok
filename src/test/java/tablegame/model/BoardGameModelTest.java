@@ -66,7 +66,14 @@ class BoardGameModelTest {
         assertEquals(Square.NONE, model.getSquare(new Position(3, 3)));
     }
 
-
+    //Testing the square properties
+    @Test
+    void testSquareProperty() {
+        BoardGameModel model = new BoardGameModel();
+        assertNotNull(model.squareProperty(0, 0));
+        assertNotNull(model.squareProperty(2, 2));
+        assertNotNull(model.squareProperty(BoardGameModel.BOARD_SIZE - 1, BoardGameModel.BOARD_SIZE - 1));
+    }
 
 }
 
