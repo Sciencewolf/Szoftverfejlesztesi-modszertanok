@@ -1,11 +1,9 @@
 package tablegame.gui;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,6 +31,9 @@ public class GameMenuController {
 
     @FXML
     private Button informationButton;
+
+    @FXML
+    private Button closeMenuButton;
 
     @FXML
     private Button closeGameInfo;
@@ -107,10 +108,20 @@ public class GameMenuController {
     @FXML
     private void openStatsWindow() throws IOException{
         try {
-            GameStats gs = new GameStats();
-            gs.openStatsWindow();
+            GameStats.addResultIntoArrayStats("win");
+            GameStats.writeArrayStatsIntoFile();
+
+            GameStats gm = new GameStats();
+            gm.openStatsWindow();
         }catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    // close main window
+    @FXML
+    private void closeMainWindow() {
+        Stage stage = (Stage) closeMenuButton.getScene().getWindow();
+        stage.close();
     }
 }
