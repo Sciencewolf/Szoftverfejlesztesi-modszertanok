@@ -108,8 +108,8 @@ public class GameMenuController {
     @FXML
     private void openStatsWindow() throws IOException{
         try {
-            GameStats.addResultIntoArrayStats("win");
-            GameStats.writeArrayStatsIntoFile();
+            // test
+            GameStats.addResultIntoArrayStats("winner", "user");
 
             GameStats gm = new GameStats();
             gm.openStatsWindow();
