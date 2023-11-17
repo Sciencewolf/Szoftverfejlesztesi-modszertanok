@@ -55,6 +55,8 @@ public class GameMenuController {
         }else {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
             Parent root = fxmlLoader.load();
+            fxmlLoader.<GameSceneController>getController().setPlayerNameOneText(nameTextFieldPlayerOne.getText());
+            fxmlLoader.<GameSceneController>getController().setPlayerNameTwoText(nameTextFieldPlayerTwo.getText());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

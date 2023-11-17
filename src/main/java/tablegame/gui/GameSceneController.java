@@ -1,7 +1,9 @@
 package tablegame.gui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
@@ -15,7 +17,15 @@ public class GameSceneController {
     @FXML
     private GridPane board;
 
+    @FXML
+    private Label playerNameOneText;
+
+    @FXML
+    private Label playerNameTwoText;
+
     private BoardGameMoveSelector moveSelector;
+    private String playerNameOne;
+    private String playerNameTwo;
 
     @FXML
     private void initialize() {
@@ -26,7 +36,8 @@ public class GameSceneController {
                 state.setOnMouseClicked(this::handleMouseClick);
             }
         }
-
+        Platform.runLater(() -> playerNameOneText.setText(playerNameOne));
+        Platform.runLater(() -> playerNameTwoText.setText(playerNameTwo));
     }
 
     private StackPane createState(int i, int j){
@@ -44,5 +55,14 @@ public class GameSceneController {
         square.getChildren().add(new Circle(30, Color.GREEN));
 
     }
+
+    public void setPlayerNameOneText(String playerNameOne){
+        this.playerNameOne = playerNameOne;
+    }
+
+    public void setPlayerNameTwoText(String playerNameTwo){
+        this.playerNameTwo = playerNameTwo;
+    }
+
 
 }
