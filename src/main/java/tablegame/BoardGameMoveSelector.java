@@ -53,7 +53,7 @@ public class BoardGameMoveSelector {
             position = pos;
             phase.set(Game_Phase.CONFIRM_SELECT);
             InvalidSelection = false;
-            Logger.info("Valid position celected.");
+            Logger.info("Valid position selected.");
         } else {
             InvalidSelection = true;
             phase.set(Game_Phase.INVALID_SELECT);
@@ -77,6 +77,7 @@ public class BoardGameMoveSelector {
             throw new IllegalStateException();
         }
         model.move(position);
+        Logger.info("Move successfully made.");
         reset();
     }
     public void confirmSelect(Position pos) {

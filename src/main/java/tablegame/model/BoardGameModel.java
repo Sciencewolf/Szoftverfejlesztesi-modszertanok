@@ -79,7 +79,7 @@ public class BoardGameModel {
     }
 
     public  Boolean canMove(Position p1, Position p2) {
-        return (isEmpty(p1) && p1.equals(p2));
+        return (isEmpty(p1) && p1.equals(p2) );
     }
 
     public void move(Position pos) {
@@ -87,7 +87,7 @@ public class BoardGameModel {
             case PLAYER_1 -> setSquare(pos, Square.BLACK);
             case PLAYER_2 -> setSquare(pos, Square.WHITE);
         }
-        Logger.info("Game piece succesfully placed.");
+        Logger.info("Game piece successfully placed.");
         changePlayers();
     }
 
