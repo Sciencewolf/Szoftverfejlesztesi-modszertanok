@@ -27,6 +27,7 @@ public class GameStats {
     private Button closeStatsWindow;
 
     private static final String FILEPATH = "src/main/java/tablegame/stats.txt";
+    private static final String STYLEPATH = "file:src/main/java/tablegame/style/styleStats.css";
 
     public static void addResultIntoArrayStats(String result, String player) {
         StringBuilder sb = new StringBuilder();
@@ -69,6 +70,7 @@ public class GameStats {
         scrollPane.setPrefSize(400, 390);
 
         Button buttonClose = new Button("Close");
+        buttonClose.getStyleClass().add("buttonClose");
         buttonClose.setTranslateX(420);
         buttonClose.setTranslateY(400);
         buttonClose.setOnAction(e -> {
@@ -81,6 +83,7 @@ public class GameStats {
 
         Stage stage = new Stage();
         Scene scene = new Scene(group);
+        scene.getStylesheets().add(STYLEPATH);
 
         // mouse event [method]
         setMouseEventsForButtonClose(scene, buttonClose);
@@ -121,6 +124,7 @@ public class GameStats {
     private void writeStatsFromFileIntoLabel(ScrollPane scrollPane) throws IOException{
         try {
             Text labelStats = new Text();
+            labelStats.getStyleClass().add("labelStats");
             labelStats.setFill(Color.BLACK);
             labelStats.setFont(Font.font(20));
             labelStats.setTranslateY(10);
