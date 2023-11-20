@@ -20,7 +20,7 @@ class BoardGameModelTest {
         BoardGameModel model = new BoardGameModel();
         assertTrue(model.isEmpty(new Position(1, 1)));
         assertTrue(model.isEmpty(new Position(4, 4)));
-        //assertFalse(model.isEmpty(new Position(0, 0))); not passed
+        assertFalse(model.isEmpty(new Position(0, 0))); //not passed
     }
 //Testing the move function
     @Test

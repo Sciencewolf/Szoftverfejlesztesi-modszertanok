@@ -3,6 +3,7 @@ package tablegame.model;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.geometry.Pos;
+import org.tinylog.Logger;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class BoardGameModel {
             }
             sub_board.add(row);
         }
+        Logger.info("Gameboard succesfully created.");
     }
 
 
@@ -73,6 +75,7 @@ public class BoardGameModel {
         } else {
             current_player.set(Player.PLAYER_1);
         }
+        Logger.info("Players changed.");
     }
 
     public  Boolean canMove(Position p1, Position p2) {
@@ -84,6 +87,7 @@ public class BoardGameModel {
             case PLAYER_1 -> setSquare(pos, Square.BLACK);
             case PLAYER_2 -> setSquare(pos, Square.WHITE);
         }
+        Logger.info("Game piece succesfully placed.");
         changePlayers();
     }
 
@@ -112,9 +116,14 @@ public class BoardGameModel {
     }
     public Square goalCheck(Position p){
         if(checkTiles(p))
-            if(getSquare(p) == Square.WHITE)
+            if(getSquare(p) == Square.WHITE) {
+                Logger.info(String.format("%s, has won!", getPlayer()));
                 return Square.BLACK;
-            else return Square.WHITE;
+            }
+            else {
+                Logger.info(String.format("%s, has won!", getPlayer()));
+                return Square.WHITE;
+            }
         return Square.NONE;
     }
 
@@ -129,5 +138,6 @@ public class BoardGameModel {
         System.out.println(model);
         model.move(pos2);
         System.out.println(model);
+        model.move(new Position(1,0));
     }
 }
