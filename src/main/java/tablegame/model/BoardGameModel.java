@@ -83,10 +83,18 @@ public class BoardGameModel {
         board[p.row()][p.col()].set(square);
     }
 
+    /**
+     * Evaluates a position on the board.
+     * @param p Position of the evaluation
+     * @return true if the board is empty at p Position
+     */
     public boolean isEmpty(Position p) {
         return getSquare(p) == Square.NONE;
     }
 
+    /**
+     * @return the current player.
+     */
     public Player getPlayer() {
         return  current_player.get();
     }
@@ -148,6 +156,12 @@ public class BoardGameModel {
         }
         return getSquare(p1) == getSquare(p2);
     }
+
+    /**
+     * Checks if the four neighbouring squares have the same color piece.
+     * @param p the choosen sqare's position.
+     * @return true if any neighbour has the same coloured piece.
+     */
     private boolean checkTiles(Position p) {
         if(checkEquality(p, new Position(p.row(), p.col()+1)) || checkEquality(p, new Position(p.row(), p.col()-1))
                 || checkEquality(p, new Position(p.row()+1, p.col())) || checkEquality(p, new Position(p.row()-1, p.col())))
