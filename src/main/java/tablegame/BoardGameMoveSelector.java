@@ -4,7 +4,7 @@ import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import tablegame.model.BoardGameModel;
 import tablegame.model.Position;
-
+import org.tinylog.Logger;
 import java.util.concurrent.Phaser;
 
 public class BoardGameMoveSelector {
@@ -24,6 +24,7 @@ public class BoardGameMoveSelector {
 
 
     public BoardGameMoveSelector(BoardGameModel model) {
+        Logger.info("Game model selected.");
         this.model = model;
     }
 
@@ -52,9 +53,11 @@ public class BoardGameMoveSelector {
             position = pos;
             phase.set(Game_Phase.CONFIRM_SELECT);
             InvalidSelection = false;
+            Logger.info("Valid position celected.");
         } else {
             InvalidSelection = true;
             phase.set(Game_Phase.INVALID_SELECT);
+            Logger.warn("Invalid position.");
         }
     }
 
@@ -80,9 +83,11 @@ public class BoardGameMoveSelector {
         if (model.canMove(position, pos)) {
             phase.set(Game_Phase.READY_TO_MOVE);
             InvalidSelection = false;
+            Logger.info("Position succesfully confirmed.");
         } else {
             phase.set(Game_Phase.ERROR_AT_CONFIRM);
             InvalidSelection = true;
+            Logger.warn("Position confirmation unsuccesful.");
         }
     }
 
@@ -90,6 +95,7 @@ public class BoardGameMoveSelector {
         position = null;
         phase.set(Game_Phase.SELECT);
         InvalidSelection = false;
+        Logger.info("The gamephase reseted.");
     }
 
     public static void main(String[] args) {
