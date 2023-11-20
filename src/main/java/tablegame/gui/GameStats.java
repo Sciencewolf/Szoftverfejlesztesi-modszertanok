@@ -6,15 +6,17 @@ import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -24,21 +26,30 @@ public class GameStats {
     @FXML
     private Button closeStatsWindow;
 
+    private static final String FILEPATH = "src/main/java/tablegame/stats.txt";
+
     public static void addResultIntoArrayStats(String result, String player) {
-        arrayStats.add(result + " -> " + player);
+        StringBuilder sb = new StringBuilder();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        sb.append("\n\uD83C\uDFC6 ")
+                .append(result)
+                .append(": ")
+                .append(player)
+                .append("\n\uD83D\uDCC6 ")
+                .append(LocalDate.now())
+                .append("\n\uD83D\uDD52 ")
+                .append(LocalTime.now().format(dtf));
+        arrayStats.add(sb.toString());
     }
 
     public static void writeArrayStatsIntoFile() {
         StringBuilder sb = new StringBuilder();
-        try (FileWriter file = new FileWriter("src/main/java/tablegame/stats.txt", true)){
-            if(arrayStats.isEmpty()) System.out.println("Array is empty!");
+
+        try (FileWriter file = new FileWriter(FILEPATH, true)){
             for (String item : arrayStats) {
-                sb.append(item).append(" at ").append(LocalDate.now()).append(" ")
-                        .append(LocalTime.now().getHour()).append("h ").append(LocalTime.now().getMinute())
-                        .append("m ")
-//                        .append(LocalTime.now().getSecond()).append("s ")   // esetleg ha kell masodperc is
-                        .append("\n");
+                sb.append(item).append("\n");
             }
+
             file.write(sb.toString());
             arrayStats.clear();
 
@@ -109,20 +120,26 @@ public class GameStats {
 
     private void writeStatsFromFileIntoLabel(ScrollPane scrollPane) throws IOException{
         try {
-            Label labelStats = new Label();
+            Text labelStats = new Text();
+            labelStats.setFill(Color.BLACK);
             labelStats.setFont(Font.font(20));
             labelStats.setTranslateY(10);
             labelStats.setTranslateX(10);
 
-            File file = new File("src/main/java/tablegame/stats.txt");
+            File file = new File(FILEPATH);
             Scanner sc = new Scanner(file);
 
-            while(sc.hasNextLine()) {
-                String line = sc.nextLine();
-                labelStats.setText(labelStats.getText() + line + "\n");
+            if(file.length() == 0) {
+                labelStats.setText("No Statistics! Go Play!");
+            }
+            else {
+                while(sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    labelStats.setText(labelStats.getText() + line + "\n");
+                }
             }
 
-            labelStats.setText(labelStats.getText() + "\n");
+            labelStats.setText(labelStats.getText());
             scrollPane.setContent(labelStats);
         } catch (IOException ex) {
             throw new RuntimeException(ex);

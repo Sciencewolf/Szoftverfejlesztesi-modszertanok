@@ -1,15 +1,19 @@
 package tablegame.gui;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
+
 import java.io.IOException;
 
 public class GameMenuController {
@@ -48,11 +52,11 @@ public class GameMenuController {
     private void openGameSceneButton(ActionEvent event) throws IOException {
 
         if (nameTextFieldPlayerOne == null || nameTextFieldPlayerOne.getText().isEmpty()
-        || nameTextFieldPlayerTwo == null || nameTextFieldPlayerTwo.getText().isEmpty()) {
+                || nameTextFieldPlayerTwo == null || nameTextFieldPlayerTwo.getText().isEmpty()) {
 
             errorLabelText.setText("Names Required");
 
-        }else {
+        } else {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
             Parent root = fxmlLoader.load();
             fxmlLoader.<GameSceneController>getController().setPlayerNameOneText(nameTextFieldPlayerOne.getText());
@@ -75,7 +79,7 @@ public class GameMenuController {
             statsButton.setOnAction(e -> {
                 try {
                     openStatsWindow();
-                }catch (IOException ex) {
+                } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
             });
@@ -108,14 +112,14 @@ public class GameMenuController {
 
     // Stats Window
     @FXML
-    private void openStatsWindow() throws IOException{
+    private void openStatsWindow() throws IOException {
         try {
             // test
-            GameStats.addResultIntoArrayStats("winner", "user");
+            GameStats.addResultIntoArrayStats("Winner", "user");
 
             GameStats gm = new GameStats();
             gm.openStatsWindow();
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
