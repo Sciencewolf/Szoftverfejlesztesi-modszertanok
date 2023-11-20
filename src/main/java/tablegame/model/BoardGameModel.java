@@ -170,8 +170,8 @@ public class BoardGameModel {
     }
 
     /**
-     * Evaluates the winning ang losing states of the game.
-     * @return true if the winer has been decided.
+     * Evaluates the winner of the game.
+     * @return the square of the winner.
      */
     public Square goalCheck(Position p){
         if(checkTiles(p))
@@ -198,5 +198,6 @@ public class BoardGameModel {
         model.move(pos2);
         System.out.println(model);
         model.move(new Position(1,0));
+        model.goalCheck(new Position(1,0));
     }
 }
