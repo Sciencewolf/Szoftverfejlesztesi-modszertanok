@@ -1,0 +1,8 @@
+.buttonClose {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.buttonClose:hover {
+    -fx-background-color: black;
+}
