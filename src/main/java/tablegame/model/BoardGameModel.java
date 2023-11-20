@@ -7,8 +7,14 @@ import org.tinylog.Logger;
 
 import java.util.ArrayList;
 
+/**
+ * The implemented model of the Game.
+ */
 public class BoardGameModel {
 
+    /**
+     * {@code BOARD_SIZE} constant variable.
+     */
     public static final int BOARD_SIZE=5;
 
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_SIZE][BOARD_SIZE];
@@ -17,6 +23,9 @@ public class BoardGameModel {
 
     private ArrayList<ArrayList<Integer>> sub_board = new ArrayList<>();
 
+    /**
+     * Enumerator that represents the two players.
+     */
     public enum Player {
             PLAYER_1,
             PLAYER_2
@@ -33,6 +42,9 @@ public class BoardGameModel {
     }
 
 
+    /**
+     * Creates the game board.
+     */
     public BoardGameModel() {
         BoardInitializer();
         var index_i = 0;
@@ -50,10 +62,19 @@ public class BoardGameModel {
         }
     }
 
+    /**
+     * @param i the first index of the board to locate the square.
+     * @param j the secound index of the board to locate the square.
+     * @return the square object's property as a readonly format.
+     */
     public ReadOnlyObjectProperty<Square> squareProperty(int i, int j) {
         return board[i][j].getReadOnlyProperty();
     }
 
+    /**
+     * @param p a Position type variable to locate the square
+     * @return a square enum object
+     */
     public Square getSquare(Position p) {
         return board[p.row()][p.col()].get();
     }
@@ -78,10 +99,21 @@ public class BoardGameModel {
         Logger.info("Players changed.");
     }
 
-    public  Boolean canMove(Position p1, Position p2) {
-        return (isEmpty(p1) && p1.equals(p2) );
+    /**
+     * Evaluates if the selected move is legal or not.
+     * @param p1 which position selected for confirmation.
+     * @param p2 which position it selected at confirmation.
+     * @return true if the same position selected, and the move is possible.
+     */
+    public Boolean canMove(Position p1, Position p2) {
+        return (isEmpty(p1) && p1.equals(p2));
     }
 
+
+    /**
+     * Handles the placing of the pieces, and prepares the next player's turn.
+     * @param pos which position the piece placed.
+     */
     public void move(Position pos) {
         switch (getPlayer()) {
             case PLAYER_1 -> setSquare(pos, Square.BLACK);
@@ -114,6 +146,11 @@ public class BoardGameModel {
             return true;
         return false;
     }
+
+    /**
+     * Evaluates the winning ang losing states of the game.
+     * @return true if the winer has been decided.
+     */
     public Square goalCheck(Position p){
         if(checkTiles(p))
             if(getSquare(p) == Square.WHITE) {
