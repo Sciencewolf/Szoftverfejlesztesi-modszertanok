@@ -106,9 +106,17 @@ public class BoardGameModel {
      * @return true if the same position selected, and the move is possible.
      */
     public Boolean canMove(Position p1, Position p2) {
-        return (isEmpty(p1) && p1.equals(p2));
+        return (isEmpty(p1) && p1.equals(p2) && isOnBoard(p1) && isOnBoard(p2));
     }
 
+    /**
+     * Checks if the given position is in the boundaries of the board.
+     * @param p Position of the square
+     * @return true if it is on the board
+     */
+    public Boolean isOnBoard(Position p) {
+        return p.col()>=0 && p.col()<=BOARD_SIZE && p.row()>=0 && p.row()<=BOARD_SIZE;
+    }
 
     /**
      * Handles the placing of the pieces, and prepares the next player's turn.
