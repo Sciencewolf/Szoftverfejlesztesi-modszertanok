@@ -95,6 +95,7 @@ public class GameMenuController {
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("file:src/main/java/tablegame/style/styleInfo.css");
         stage.setScene(scene);
         stage.setWidth(900);
         stage.setHeight(200);

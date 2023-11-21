@@ -68,6 +68,7 @@ public class GameStats {
         scrollPane.setTranslateX(10);
         scrollPane.setTranslateY(20);
         scrollPane.setPrefSize(400, 390);
+        scrollPane.getStyleClass().add("scrollPane");
 
         Button buttonClose = new Button("Close");
         buttonClose.getStyleClass().add("buttonClose");
@@ -80,6 +81,7 @@ public class GameStats {
 
         Group group = new Group();
         group.getChildren().add(buttonClose);
+        group.getStyleClass().add("mainStatsWindow");
 
         Stage stage = new Stage();
         Scene scene = new Scene(group);
