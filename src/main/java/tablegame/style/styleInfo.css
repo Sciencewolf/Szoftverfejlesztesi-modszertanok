@@ -1,0 +1,13 @@
+.closeGameInfoButton:hover {
+    -fx-background-color: black;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+.mainInfoWindow {
+    -fx-background-color: #353839;
+}
+
+.label1, .label2, .label3, .label4 {
+    -fx-text-fill: white;
+}

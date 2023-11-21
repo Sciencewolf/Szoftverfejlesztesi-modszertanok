@@ -10,15 +10,16 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="tablegame.gui.GameMenuController"
-            prefHeight="200.0" prefWidth="50.0">
+            prefHeight="200.0" prefWidth="50.0"
+            styleClass="mainInfoWindow">
 <!--    <Label layoutX="400" layoutY="10" contentDisplay="CENTER" text="Game Info" />-->
 
-    <Label layoutX="10" layoutY="30" contentDisplay="CENTER" text="Egy játékot két játékos játszhat egy 5 × 5 méretű mezőből álló játéktáblán, ahol felváltva kell lépniük. "/>
-    <Label layoutX="10" layoutY="50" contentDisplay="CENTER" text="Egy lépésben a játékosnak egy üres mezőre kell helyeznie saját jelét."/>
-    <Label layoutX="10" layoutY="70" contentDisplay="CENTER" text="A játék akkor ér véget, ha valamelyik játékos egy olyan mezőre helyezi a jelét, amely négy szomszédosan kapcsolódik egy másik, saját jelet tartalmazó mezőhöz."/>
-    <Label layoutX="10" layoutY="90" contentDisplay="CENTER" text="Ebben az esetben a játékos veszít." />
+    <Label layoutX="10" layoutY="30" contentDisplay="CENTER" styleClass="label1" text="Egy játékot két játékos játszhat egy 5 × 5 méretű mezőből álló játéktáblán, ahol felváltva kell lépniük. "/>
+    <Label layoutX="10" layoutY="50" contentDisplay="CENTER" styleClass="label2" text="Egy lépésben a játékosnak egy üres mezőre kell helyeznie saját jelét."/>
+    <Label layoutX="10" layoutY="70" contentDisplay="CENTER" styleClass="label3" text="A játék akkor ér véget, ha valamelyik játékos egy olyan mezőre helyezi a jelét, amely négy szomszédosan kapcsolódik egy másik, saját jelet tartalmazó mezőhöz."/>
+    <Label layoutX="10" layoutY="90" contentDisplay="CENTER" styleClass="label4" text="Ebben az esetben a játékos veszít." />
 
-    <Button fx:id="closeGameInfo" text="Close" layoutX="800" layoutY="120" onAction="#closeGameInfo"/>
+    <Button fx:id="closeGameInfo" styleClass="closeGameInfoButton" text="Close" layoutX="800" layoutY="120" onAction="#closeGameInfo"/>
 
 
 </AnchorPane>
