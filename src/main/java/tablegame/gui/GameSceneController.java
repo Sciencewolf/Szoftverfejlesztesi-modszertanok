@@ -56,11 +56,14 @@ public class GameSceneController {
         var row = GridPane.getRowIndex(square);
         var col = GridPane.getColumnIndex(square);
         Position position = new Position(row, col);
-        square.getChildren().add(new Circle(30, Color.GREEN));
 
         selector.select(position);
         switch (selector.getPhase()) {
-            case READY_TO_MOVE -> selector.makeMove();
+            case READY_TO_MOVE -> {
+                selector.makeMove();
+                square.getChildren().add(new Circle(30, Color.GREEN));;
+            }
+            case CONFIRM_SELECT -> square.getChildren().add(new Circle(30, Color.RED));
             case INVALID_SELECT, ERROR_AT_CONFIRM -> selector.reset();
         }
     }
