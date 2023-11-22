@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import tablegame.BoardGameMoveSelector;
 import tablegame.model.BoardGameModel;
+import tablegame.model.Position;
 
 public class GameSceneController {
     @FXML
@@ -23,7 +24,9 @@ public class GameSceneController {
     @FXML
     private Label playerNameTwoText;
 
-    private BoardGameMoveSelector moveSelector;
+    private BoardGameModel model = new BoardGameModel();
+
+    private BoardGameMoveSelector selector = new BoardGameMoveSelector(model);
     private String playerNameOne;
     private String playerNameTwo;
 
@@ -52,8 +55,14 @@ public class GameSceneController {
         var square = (StackPane) event.getSource();
         var row = GridPane.getRowIndex(square);
         var col = GridPane.getColumnIndex(square);
+        Position position = new Position(row, col);
         square.getChildren().add(new Circle(30, Color.GREEN));
 
+        selector.select(position);
+        switch (selector.getPhase()) {
+            case READY_TO_MOVE -> selector.makeMove();
+            case INVALID_SELECT, ERROR_AT_CONFIRM -> selector.reset();
+        }
     }
 
     public void setPlayerNameOneText(String playerNameOne){
