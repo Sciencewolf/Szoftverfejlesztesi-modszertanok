@@ -17,9 +17,11 @@
     -fx-background-radius: 10; /* Szövegdoboz lekerekítése */
 }
 #errorLabelText {
-    -fx-font-size: 13px;
+    -fx-text-fill: #bf0d0d; /* Hibaüzenet szövegszíne */
+    -fx-font-size: 15px; /* Hibaüzenet betűmérete */
 }
 
 .label {
-    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff; /* Címke szövegszíne */
+    -fx-font-size: 20px; /* Címke betűmérete */
 }
