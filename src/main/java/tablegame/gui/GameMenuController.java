@@ -7,6 +7,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,7 +26,7 @@ public class GameMenuController {
     private TextField nameTextFieldPlayerOne;
 
     @FXML
-    private TextField nameTextFieldPlayerTwo;
+    private TextField nameTextFieldPlayerTwo; // hasznald ezt hogyha latni akarjuk hogy ki lep
 
     @FXML
     private Label errorLabelText;
@@ -63,6 +64,7 @@ public class GameMenuController {
             fxmlLoader.<GameSceneController>getController().setPlayerNameTwoText(nameTextFieldPlayerTwo.getText());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add("file:src/main/java/tablegame/style/styleGameScene.css"); // except board style @fxml/gameUI.css
             stage.setScene(scene);
             stage.show();
 
@@ -116,7 +118,7 @@ public class GameMenuController {
     private void openStatsWindow() throws IOException {
         try {
             // test
-            GameStats.addResultIntoArrayStats("Winner", "user");
+//            GameStats.addResultIntoArrayStats("me");
 
             GameStats gm = new GameStats();
             gm.openStatsWindow();
