@@ -10,3 +10,9 @@
     -fx-font-size: 16px; /* Gomb betűmérete */
     -fx-background-radius: 15; /* Gomb lekerekítése */
 }
+
+#nameTextFieldPlayerOne, #nameTextFieldPlayerTwo {
+    -fx-background-color: #ecf0f1; /* Szövegdoboz háttérszíne */
+    -fx-font-size: 14px; /* Szövegdoboz betűmérete */
+    -fx-background-radius: 10; /* Szövegdoboz lekerekítése */
+}
