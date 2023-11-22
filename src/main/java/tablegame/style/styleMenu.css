@@ -25,3 +25,28 @@
     -fx-text-fill: #ffffff; /* Címke szövegszíne */
     -fx-font-size: 20px; /* Címke betűmérete */
 }
+
+@media only screen and (max-width: 600px) {
+    /* Stílusok a kisebb kijelzőkre */
+    .root {
+        -fx-background-color: #3498db;
+    }
+
+    #startGameButton, #informationButton {
+        -fx-background-color: #2ecc71;
+        -fx-font-size: 14px;
+    }
+
+    #nameTextFieldPlayerOne, #nameTextFieldPlayerTwo {
+        -fx-background-color: #ecf0f1;
+        -fx-font-size: 12px;
+    }
+
+    #errorLabelText {
+        -fx-font-size: 13px;
+    }
+
+    .label {
+        -fx-font-size: 16px;
+    }
+}
