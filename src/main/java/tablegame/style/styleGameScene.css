@@ -1,13 +1,13 @@
 .playerNameOneText {
     -fx-font-size: 28px;
     -fx-translate-x: 30;
-    -fx-translate-y: 10;
+    -fx-translate-y: 5;
     -fx-font-style: italic;
 }
 
 .playerNameTwoText {
     -fx-font-size: 28px;
     -fx-translate-x: 30;
-    -fx-translate-y: 50;
+    -fx-translate-y: 45;
     -fx-font-style: italic;
 }

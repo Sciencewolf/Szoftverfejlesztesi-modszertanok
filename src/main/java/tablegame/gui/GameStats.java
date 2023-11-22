@@ -94,6 +94,9 @@ public class GameStats {
 
         group.getChildren().add(scrollPane);
 
+        // test
+        GameResultWindow.createResultWindow();
+
         stage.setScene(scene);
         stage.setWidth(500);
         stage.setHeight(500);
