@@ -28,7 +28,7 @@ class BoardGameModelTest {
         BoardGameModel model = new BoardGameModel();
         Position pos = new Position(1, 1);
         model.move(pos);
-        assertEquals(Square.BLACK, model.getSquare(pos));
+        assertEquals(Square.RED, model.getSquare(pos));
         assertEquals(BoardGameModel.Player.PLAYER_2, model.getPlayer());
     }
 

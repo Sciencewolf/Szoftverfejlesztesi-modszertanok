@@ -2,7 +2,6 @@ package tablegame.model;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.geometry.Pos;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class BoardGameModel {
      */
     public enum Player {
             PLAYER_1("RED"),
-            PLAYER_2("GREEN");
+            PLAYER_2("BLUE");
 
             String colour;
             Player(String c){
@@ -145,8 +144,8 @@ public class BoardGameModel {
      */
     public void move(Position pos) {
         switch (getPlayer()) {
-            case PLAYER_1 -> setSquare(pos, Square.BLACK);
-            case PLAYER_2 -> setSquare(pos, Square.WHITE);
+            case PLAYER_1 -> setSquare(pos, Square.RED);
+            case PLAYER_2 -> setSquare(pos, Square.BLUE);
         }
         Logger.info("Game piece successfully placed.");
         changePlayers();
@@ -188,13 +187,13 @@ public class BoardGameModel {
      */
     public Square goalCheck(Position p){
         if(checkTiles(p))
-            if(getSquare(p) == Square.WHITE) {
+            if(getSquare(p) == Square.BLUE) {
                 Logger.info(String.format("%s, has won!", getPlayer()));
-                return Square.BLACK;
+                return Square.RED;
             }
             else {
                 Logger.info(String.format("%s, has won!", getPlayer()));
-                return Square.WHITE;
+                return Square.BLUE;
             }
         return Square.NONE;
     }

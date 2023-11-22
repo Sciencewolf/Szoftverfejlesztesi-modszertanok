@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="445.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tablegame.gui.GameSceneController">
    <children>
-      <GridPane fx:id="board" layoutX="14.0" layoutY="95.0" prefHeight="325.0" prefWidth="347.0">
+      <GridPane fx:id="board" layoutX="14.0" layoutY="95.0" prefHeight="325.0" prefWidth="347.0" stylesheets="@gameUI.css">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

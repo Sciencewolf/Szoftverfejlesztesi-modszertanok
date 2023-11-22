@@ -5,7 +5,6 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import tablegame.model.BoardGameModel;
 import tablegame.model.Position;
 import org.tinylog.Logger;
-import java.util.concurrent.Phaser;
 
 /**
  * Handles the selection of the squares in the application.
@@ -49,7 +48,7 @@ public class BoardGameMoveSelector {
      * Read only wrapper for Phase enum.
      * @return a Phase property.
      */
-    public ReadOnlyObjectProperty<Game_Phase> phaseProrety() {
+    public ReadOnlyObjectProperty<Game_Phase> phaseProperty() {
         return phase.getReadOnlyProperty();
     }
 
