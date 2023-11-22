@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.tinylog.Logger;
 import tablegame.BoardGameMoveSelector;
 import tablegame.model.BoardGameModel;
 import tablegame.model.Position;
@@ -61,10 +62,14 @@ public class GameSceneController {
         switch (selector.getPhase()) {
             case READY_TO_MOVE -> {
                 selector.makeMove();
-                square.getChildren().add(new Circle(30, Color.GREEN));;
+                square.getChildren().add(new Circle(30, Color.valueOf(model.getPlayerColour())));
             }
-            case CONFIRM_SELECT -> square.getChildren().add(new Circle(30, Color.RED));
-            case INVALID_SELECT, ERROR_AT_CONFIRM -> selector.reset();
+            case CONFIRM_SELECT -> square.getChildren().add(new Circle(30, Color.LAWNGREEN));
+            case INVALID_SELECT, ERROR_AT_CONFIRM -> {
+                square.getChildren().add(new Circle(30, Color.LIGHTGRAY));
+                selector.reset();
+
+            }
         }
     }
 

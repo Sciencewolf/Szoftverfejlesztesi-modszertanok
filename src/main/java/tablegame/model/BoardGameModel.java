@@ -27,8 +27,17 @@ public class BoardGameModel {
      * Enumerator that represents the two players.
      */
     public enum Player {
-            PLAYER_1,
-            PLAYER_2
+            PLAYER_1("RED"),
+            PLAYER_2("GREEN");
+
+            String colour;
+            Player(String c){
+                colour = c;
+            }
+
+            String showColour(){
+                return colour;
+            }
     }
     private void BoardInitializer() {
         for (int i = 0; i < BOARD_SIZE; i++) {
@@ -97,6 +106,10 @@ public class BoardGameModel {
      */
     public Player getPlayer() {
         return  current_player.get();
+    }
+
+    public String getPlayerColour() {
+        return getPlayer().showColour();
     }
     public void changePlayers() {
         if (getPlayer() == Player.PLAYER_1) {
