@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -65,6 +66,7 @@ public class GameMenuController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             scene.getStylesheets().add("file:src/main/java/tablegame/style/styleGameScene.css"); // except board style @fxml/gameUI.css
+            stage.getIcons().add(new Image("file:src/main/java/tablegame/icon/iconGameScene.png"));
             stage.setScene(scene);
             stage.show();
 
@@ -102,6 +104,7 @@ public class GameMenuController {
         stage.setWidth(900);
         stage.setHeight(200);
         stage.setTitle("Game Info");
+        stage.getIcons().add(new Image("file:src/main/java/tablegame/icon/iconInfoPage.png"));
         stage.hide();
         stage.show();
     }

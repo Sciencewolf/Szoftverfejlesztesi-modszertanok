@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -97,6 +98,7 @@ public class GameStats {
         stage.setWidth(500);
         stage.setHeight(500);
         stage.setTitle("Statistics");
+        stage.getIcons().add(new Image("file:src/main/java/tablegame/icon/iconStatsPage.png"));
         stage.hide();
         stage.show();
     }
