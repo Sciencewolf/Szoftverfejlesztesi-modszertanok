@@ -1,3 +1,8 @@
 .square.selected {
     -fx-background-color: lightgreen;
 }
+
+.state {
+    -fx-alignment: center;
+    -fx-translate-x: 50;
+}
