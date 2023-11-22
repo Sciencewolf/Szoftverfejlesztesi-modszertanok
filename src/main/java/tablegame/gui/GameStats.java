@@ -29,12 +29,11 @@ public class GameStats {
     private static final String FILEPATH = "src/main/java/tablegame/stats.txt";
     private static final String STYLEPATH = "file:src/main/java/tablegame/style/styleStats.css";
 
-    public static void addResultIntoArrayStats(String result, String player) {
+    public static void addResultIntoArrayStats(String player) {
         StringBuilder sb = new StringBuilder();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         sb.append("\n\uD83C\uDFC6 ")
-                .append(result)
-                .append(": ")
+                .append("Winner: ")
                 .append(player)
                 .append("\n\uD83D\uDCC6 ")
                 .append(LocalDate.now())
