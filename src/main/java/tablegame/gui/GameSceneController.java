@@ -42,11 +42,15 @@ public class GameSceneController {
                 Node state = createState(row, col);
                 board.add(state, col,row);
                 state.setOnMouseClicked(this::handleMouseClick);
+                state.getStyleClass().add("state");
             }
         }
         selector.phaseProperty().addListener(this::showSelectionPhaseChange);
-        Platform.runLater(() -> playerNameOneText.setText(playerNameOne));
-        Platform.runLater(() -> playerNameTwoText.setText(playerNameTwo));
+        // itt egybe adom a neveket lehet majd nem lesz jo ha latni akarjuk hogy ki jon
+        Platform.runLater(() -> playerNameOneText.setText(playerNameOne + " vs " + playerNameTwo));
+
+        // lehet ezt hasznalni hogy lassuk kinek kell lepni, hasonlo logika alapjan
+//        Platform.runLater(() -> playerNameTwoText.setText(playerNameTwo));
     }
 
     private StackPane createState(int i, int j){
