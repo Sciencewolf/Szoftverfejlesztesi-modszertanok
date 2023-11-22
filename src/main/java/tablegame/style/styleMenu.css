@@ -16,3 +16,10 @@
     -fx-font-size: 14px; /* Szövegdoboz betűmérete */
     -fx-background-radius: 10; /* Szövegdoboz lekerekítése */
 }
+#errorLabelText {
+    -fx-font-size: 13px;
+}
+
+.label {
+    -fx-font-size: 16px;
+}
