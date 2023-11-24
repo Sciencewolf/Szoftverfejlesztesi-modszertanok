@@ -1,14 +1,10 @@
 package tablegame.gui;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -121,7 +117,7 @@ public class GameMenuController {
     private void openStatsWindow() throws IOException {
         try {
             // test
-//            GameStats.addResultIntoArrayStats("me");
+            GameStats.addResultIntoArrayStats("me");
 
             GameStats gm = new GameStats();
             gm.openStatsWindow();

@@ -1,14 +1,11 @@
 package tablegame.gui;
 
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -23,9 +20,6 @@ import java.util.*;
 
 public class GameStats {
     protected static ArrayList<String> arrayStats = new ArrayList<>();
-
-    @FXML
-    private Button closeStatsWindow;
 
     private static final String FILEPATH = "src/main/java/tablegame/stats.txt";
     private static final String STYLEPATH = "file:src/main/java/tablegame/style/styleStats.css";
@@ -94,9 +88,6 @@ public class GameStats {
 
         group.getChildren().add(scrollPane);
 
-        // test
-        GameResultWindow.createResultWindow();
-
         stage.setScene(scene);
         stage.setWidth(500);
         stage.setHeight(500);
@@ -106,28 +97,13 @@ public class GameStats {
         stage.show();
     }
 
-    private void closeStatsWindow() {
-        Stage stage = (Stage) closeStatsWindow.getScene().getWindow();
-        stage.close();
-    }
-
     private void setMouseEventsForButtonClose(Scene scene, Button buttonClose) {
-        buttonClose.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                scene.setCursor(Cursor.HAND);
-            }
-        });
+        buttonClose.setOnMouseEntered(event -> scene.setCursor(Cursor.HAND));
 
-        buttonClose.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                scene.setCursor(Cursor.DEFAULT);
-            }
-        });
+        buttonClose.setOnMouseExited(event -> scene.setCursor(Cursor.DEFAULT));
     }
 
-    private void writeStatsFromFileIntoLabel(ScrollPane scrollPane) throws IOException{
+    private void writeStatsFromFileIntoLabel(ScrollPane scrollPane){
         try {
             Text labelStats = new Text();
             labelStats.getStyleClass().add("labelStats");

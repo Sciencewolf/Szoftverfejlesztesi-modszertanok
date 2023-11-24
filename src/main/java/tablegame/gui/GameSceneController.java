@@ -11,7 +11,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import org.tinylog.Logger;
 import tablegame.BoardGameMoveSelector;
 import tablegame.model.BoardGameModel;
 import tablegame.model.Position;
