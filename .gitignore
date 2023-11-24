@@ -189,3 +189,4 @@ nbdist/
 .nb-gradle/
 >>>>>>> ad9398c545803de04b99bc0d4dcb1bc66f76def6
 src/main/resources/fxml/stats.fxml
+src/main/resources/fxml/info.fxml
