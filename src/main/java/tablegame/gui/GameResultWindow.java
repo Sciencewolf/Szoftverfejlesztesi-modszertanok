@@ -13,10 +13,10 @@ public class GameResultWindow {
     public static final String ICONPATH = "file:src/main/java/tablegame/icon/iconResultPage.png";
     @FXML
     public static void createResultWindow() {
-        Text label = new Text("Hello");
+        Text label = new Text("Winner: ");
         label.getStyleClass().add("label");
 
-        Button buttonClose = new Button("Close");
+        Button buttonClose = new Button("OK");
         buttonClose.getStyleClass().add("buttonClose");
         buttonClose.setOnAction(e -> {
             Stage stage = (Stage) buttonClose.getScene().getWindow();
@@ -32,8 +32,8 @@ public class GameResultWindow {
         scene.getStylesheets().add(STYLEPATH);
 
         stage.setScene(scene);
-        stage.setWidth(400);
-        stage.setHeight(200);
+        stage.setWidth(300);
+        stage.setHeight(150);
         stage.setTitle("Result");
         stage.getIcons().add(new Image(ICONPATH));
         stage.hide();
