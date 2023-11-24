@@ -163,7 +163,7 @@ public class BoardGameModel {
         return Sb.toString();
     }
     private boolean checkEquality(Position p1 , Position p2) {
-        if (p2.row() == -1 || p2.col() == -1) {
+        if (p2.row() == -1 || p2.col() == -1 || p2.row() == 5 || p2.col() == 5) {
             return false;
         }
         return getSquare(p1) == getSquare(p2);
