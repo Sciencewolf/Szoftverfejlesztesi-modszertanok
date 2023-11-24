@@ -75,8 +75,9 @@ public class GameSceneController {
                 if (currentSquare != Square.NONE) {
                     GameResultWindow result = new GameResultWindow();
                     String winner = getColorOfSquare(currentSquare);
+                    String against = playerNameOne;
 
-                    result.createResultWindow(board, winner);
+                    result.createResultWindow(board, winner, against);
                 }
             }
             case INVALID_SELECT, ERROR_AT_CONFIRM ->  selector.reset();

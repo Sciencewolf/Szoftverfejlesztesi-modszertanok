@@ -24,16 +24,22 @@ public class GameStats {
     private static final String FILEPATH = "src/main/java/tablegame/stats.txt";
     private static final String STYLEPATH = "file:src/main/java/tablegame/style/styleStats.css";
 
-    public static void addResultIntoArrayStats(String player) {
+    private static final String ICONSTATSPAGEPATH = "file:src/main/java/tablegame/icon/iconStatsPage.png";
+
+    public static void addResultIntoArrayStats(String player, String against) {
         StringBuilder sb = new StringBuilder();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        sb.append("\n\uD83C\uDFC6 ")
-                .append("Winner: ")
+        sb.append("\u2694  ")
                 .append(player)
-                .append("\n\uD83D\uDCC6 ")
+                .append(" vs ")
+                .append(against)
+                .append("\n\uD83C\uDFC6 ") // 🏆
+                .append(player)
+                .append("\n\uD83D\uDCC6 ") // 📆
                 .append(LocalDate.now())
-                .append("\n\uD83D\uDD52 ")
-                .append(LocalTime.now().format(dtf));
+                .append("\n\uD83D\uDD52 ") // 🕒
+                .append(LocalTime.now().format(dtf))
+                .append("\n"); // ⚔️ " \u2694\uFE0F" ⚔
         arrayStats.add(sb.toString());
     }
 
@@ -92,7 +98,7 @@ public class GameStats {
         stage.setWidth(500);
         stage.setHeight(500);
         stage.setTitle("Statistics");
-        stage.getIcons().add(new Image("file:src/main/java/tablegame/icon/iconStatsPage.png"));
+        stage.getIcons().add(new Image(ICONSTATSPAGEPATH));
         stage.hide();
         stage.show();
     }

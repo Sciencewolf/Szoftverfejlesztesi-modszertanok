@@ -14,26 +14,32 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameResultWindow {
-    public static final String STYLEPATH = "file:src/main/java/tablegame/style/styleResultPage.css";
-    public static final String ICONPATH = "file:src/main/java/tablegame/icon/iconResultPage.png";
+    private static final String STYLEPATH = "file:src/main/java/tablegame/style/styleResultPage.css";
+
+    private static final String ICONPATH = "file:src/main/java/tablegame/icon/iconResultPage.png";
+
+    private static final String MENUFXMLPATH= "/fxml/menu.fxml";
+
     @FXML
-    public void createResultWindow(GridPane board, String winnerName) {
+    public void createResultWindow(GridPane board, String winnerName, String against) {
         Text label = new Text("Winner: " + winnerName);
         label.getStyleClass().add("label");
-        GameStats.addResultIntoArrayStats(winnerName);
+        GameStats.addResultIntoArrayStats(winnerName, against);
 
         Button buttonClose = new Button("OK");
         buttonClose.getStyleClass().add("buttonClose");
         buttonClose.setOnAction(e -> {
             Stage stage = (Stage) buttonClose.getScene().getWindow();
             stage.close();
+
             Stage win = (Stage) board.getParent().getScene().getWindow();
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/fxml/menu.fxml"));
+                root = FXMLLoader.load(getClass().getResource(MENUFXMLPATH));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
+
             Scene scene = new Scene(root);
             win.setScene(scene);
             win.show();
