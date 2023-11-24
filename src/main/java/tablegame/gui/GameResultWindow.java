@@ -20,6 +20,7 @@ public class GameResultWindow {
     public void createResultWindow(GridPane board, String winnerName) {
         Text label = new Text("Winner: " + winnerName);
         label.getStyleClass().add("label");
+        GameStats.addResultIntoArrayStats(winnerName);
 
         Button buttonClose = new Button("OK");
         buttonClose.getStyleClass().add("buttonClose");
