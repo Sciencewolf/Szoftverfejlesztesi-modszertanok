@@ -1,15 +1,21 @@
 .label {
     -fx-translate-x: 10;
-    -fx-translate-y: 20;
+    -fx-translate-y: 50;
+    -fx-font-size: 18px;
 }
 
 .buttonClose {
-    -fx-translate-y: 120;
-    -fx-translate-x: 320;
+    -fx-translate-x: 235;
+    -fx-translate-y: 75;
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
+    -fx-border-color: silver;
+    -fx-border-radius: 6px;
 }
 
 .buttonClose:hover {
     -fx-cursor: hand;
     -fx-text-fill: white;
     -fx-background-color: black;
+    -fx-border-color: black;
 }
