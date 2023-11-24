@@ -69,9 +69,22 @@ public class GameSceneController {
         Position position = new Position(row, col);
         selector.select(position);
         switch (selector.getPhase()) {
-            case READY_TO_MOVE -> selector.makeMove();
+            case READY_TO_MOVE -> {
+                selector.makeMove();
+                Square currentSquare = model.goalCheck(position);
+                if (currentSquare != Square.NONE) {
+                    GameResultWindow result = new GameResultWindow();
+                    String winner = getColorOfSquare(currentSquare);
+
+                    result.createResultWindow(board, winner);
+                }
+            }
             case INVALID_SELECT, ERROR_AT_CONFIRM ->  selector.reset();
         }
+    }
+
+    private String getColorOfSquare(Square square) {
+        return square == Square.BLUE ? playerNameTwo : playerNameOne;
     }
 
     private ObjectBinding<Paint> createSquareBinding(ReadOnlyObjectProperty<Square> squareProperty) {
