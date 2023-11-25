@@ -13,20 +13,10 @@
     -fx-font-size: 18px;
     -fx-text-fill: black;
     -fx-translate-x: 10;
-}
-
-.label1 {
     -fx-translate-y: 30;
 }
 
 .imageView1 {
-    -fx-translate-x: 10;
-    -fx-translate-y: 150;
-    -fx-border-width: 3px;
-    -fx-border-color: black;
-}
-
-.imageView2 {
-    -fx-translate-x: 440;
+    -fx-translate-x: 250;
     -fx-translate-y: 150;
 }

@@ -11,7 +11,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import org.tinylog.Logger;
 import tablegame.BoardGameMoveSelector;
 import tablegame.model.BoardGameModel;
 import tablegame.model.Position;
@@ -25,9 +24,6 @@ public class GameSceneController {
 
     @FXML
     private Label playerNameOneText;
-
-    @FXML
-    private Label playerNameTwoText;
 
     @FXML
     private Label nextPlayerText;
@@ -49,11 +45,8 @@ public class GameSceneController {
             }
         }
         selector.phaseProperty().addListener(this::showSelectionPhaseChange);
-        // itt egybe adom a neveket lehet majd nem lesz jo ha latni akarjuk hogy ki jon
-        Platform.runLater(() -> playerNameOneText.setText(playerNameOne + " vs " + playerNameTwo));
 
-        // lehet ezt hasznalni hogy lassuk kinek kell lepni, hasonlo logika alapjan
-        //Platform.runLater(() -> playerNameTwoText.setText(playerNameTwo));
+        Platform.runLater(() -> playerNameOneText.setText(playerNameOne + " vs " + playerNameTwo)); // 🔵
     }
 
     private StackPane createState(int i, int j){
@@ -155,6 +148,4 @@ public class GameSceneController {
     public void setPlayerNameTwoText(String playerNameTwo){
         this.playerNameTwo = playerNameTwo;
     }
-
-
 }
