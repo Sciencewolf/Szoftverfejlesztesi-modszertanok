@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import org.tinylog.Logger;
 import tablegame.BoardGameMoveSelector;
 import tablegame.model.BoardGameModel;
 import tablegame.model.Position;
@@ -27,6 +28,9 @@ public class GameSceneController {
 
     @FXML
     private Label playerNameTwoText;
+
+    @FXML
+    private Label nextPlayerText;
 
     private BoardGameModel model = new BoardGameModel();
 
@@ -49,7 +53,7 @@ public class GameSceneController {
         Platform.runLater(() -> playerNameOneText.setText(playerNameOne + " vs " + playerNameTwo));
 
         // lehet ezt hasznalni hogy lassuk kinek kell lepni, hasonlo logika alapjan
-//        Platform.runLater(() -> playerNameTwoText.setText(playerNameTwo));
+        //Platform.runLater(() -> playerNameTwoText.setText(playerNameTwo));
     }
 
     private StackPane createState(int i, int j){
@@ -58,6 +62,7 @@ public class GameSceneController {
         var piece = new Circle(30);
         piece.fillProperty().bind(createSquareBinding(model.squareProperty(i, j)));
         pane.getChildren().add(piece);
+        getNextPlayerText();
         return pane;
     }
 
@@ -71,12 +76,12 @@ public class GameSceneController {
         switch (selector.getPhase()) {
             case READY_TO_MOVE -> {
                 selector.makeMove();
+                getNextPlayerText();
                 Square currentSquare = model.goalCheck(position);
                 if (currentSquare != Square.NONE) {
                     GameResultWindow result = new GameResultWindow();
                     String winner = getColorOfSquare(currentSquare);
                     String against = playerNameOne;
-
                     result.createResultWindow(board, winner, against);
                 }
             }
@@ -87,6 +92,16 @@ public class GameSceneController {
     private String getColorOfSquare(Square square) {
         return square == Square.BLUE ? playerNameTwo : playerNameOne;
     }
+
+    private void getNextPlayerText(){
+        BoardGameModel.Player currentPlayer = model.getPlayer();
+        if (currentPlayer == BoardGameModel.Player.PLAYER_2){
+            nextPlayerText.setText("Blue is next");
+        }else{
+            nextPlayerText.setText("Red is next");
+        }
+    }
+
 
     private ObjectBinding<Paint> createSquareBinding(ReadOnlyObjectProperty<Square> squareProperty) {
         return new ObjectBinding<Paint>() {
