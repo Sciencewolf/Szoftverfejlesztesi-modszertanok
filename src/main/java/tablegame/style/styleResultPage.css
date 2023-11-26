@@ -13,7 +13,7 @@
     -fx-border-radius: 6px;
 }
 
-.buttonClose:hover {
+.buttonClose:hover, .showStatsButton:hover {
     -fx-cursor: hand;
     -fx-text-fill: white;
     -fx-background-color: black;

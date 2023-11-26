@@ -30,9 +30,9 @@ public class GameStats {
         StringBuilder sb = new StringBuilder();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         sb.append("\u2694  ")
-                .append(player)
-                .append(" vs ")
                 .append(against)
+                .append(" vs ")
+                .append(player)
                 .append("\n\uD83C\uDFC6 ") // 🏆
                 .append(player)
                 .append("\n\uD83D\uDCC6 ") // 📆
