@@ -45,9 +45,24 @@ public class GameResultWindow {
             win.show();
         });
 
+        Button showStatsButton = new Button("Show Statistic");
+        showStatsButton.getStyleClass().add("showStatsButton");
+        showStatsButton.setOnAction(event -> {
+            try{
+                GameMenuController menuController = new GameMenuController();
+                menuController.openStatsWindow();
+            }catch (IOException exception){
+                throw new RuntimeException();
+            }
+        });
+
         Group group = new Group();
         group.getChildren().add(label);
         group.getChildren().add(buttonClose);
+        group.getChildren().add(showStatsButton);
+
+        showStatsButton.setLayoutX(120);
+        showStatsButton.setLayoutY(77);
 
         Stage stage = new Stage();
         Scene scene = new Scene(group);

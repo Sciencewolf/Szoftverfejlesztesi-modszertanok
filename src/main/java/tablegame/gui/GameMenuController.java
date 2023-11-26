@@ -151,7 +151,7 @@ public class GameMenuController {
 
     // Stats Window
     @FXML
-    private void openStatsWindow() throws IOException {
+    public void openStatsWindow() throws IOException {
         try {
             GameStats gm = new GameStats();
             gm.openStatsWindow();
