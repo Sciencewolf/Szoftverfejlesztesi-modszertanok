@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import org.tinylog.Logger;
 import tablegame.BoardGameMoveSelector;
 import tablegame.model.BoardGameModel;
 import tablegame.model.Position;
@@ -18,6 +19,9 @@ import tablegame.model.Square;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ReadOnlyObjectProperty;
 
+/**
+ * Handles the interactions during the game.
+ */
 public class GameSceneController {
     @FXML
     private GridPane board;
@@ -34,6 +38,9 @@ public class GameSceneController {
     private String playerNameOne;
     private String playerNameTwo;
 
+    /**
+     * Creates the visual representation of the model, and sets the mouse click at each position and adds the observer.
+     */
     @FXML
     private void initialize() {
         for (int row = 0; row < board.getRowCount(); row++){
@@ -49,6 +56,12 @@ public class GameSceneController {
         Platform.runLater(() -> playerNameOneText.setText(playerNameOne + " vs " + playerNameTwo)); // 🔵
     }
 
+    /**
+     * Creates the squares at the given indexes.
+     * @param i row index of the square
+     * @param j column index of the square
+     * @return the created square
+     */
     private StackPane createState(int i, int j){
         StackPane pane = new StackPane();
         pane.getStyleClass().add("square");
@@ -82,10 +95,18 @@ public class GameSceneController {
         }
     }
 
+    /**
+     * Gets the name of the opposing player from the selected square.
+     * @param square
+     * @return the opposing player's name
+     */
     private String getColorOfSquare(Square square) {
         return square == Square.BLUE ? playerNameTwo : playerNameOne;
     }
 
+    /**
+     * Shows the currently playing player at the game window.
+     */
     private void getNextPlayerText(){
         BoardGameModel.Player currentPlayer = model.getPlayer();
         if (currentPlayer == BoardGameModel.Player.PLAYER_2){
@@ -112,6 +133,9 @@ public class GameSceneController {
         };
     }
 
+    /**
+     * Handles the phase change for the selection highlighting.
+     */
     private void showSelectionPhaseChange(ObservableValue<? extends BoardGameMoveSelector.Game_Phase> value, BoardGameMoveSelector.Game_Phase oldPhase, BoardGameMoveSelector.Game_Phase newPhase) {
         switch (newPhase) {
             case SELECT -> {}
@@ -122,15 +146,24 @@ public class GameSceneController {
         }
     }
 
+    /**
+     * Sets the html class of the selected square, for handling the highlight.
+     * @param position of the selected square
+     */
     private void showSelection(Position position) {
         var square = getSquare(position);
         square.getStyleClass().add("selected");
-
+        Logger.info(String.format("Highlighted the {%d, %d} square", position.row(), position.col()));
     }
 
+    /**
+     * Sets the html class of the selected square, for handling the highlight.
+     * @param position of the selected square
+     */
     private void hideSelection(Position position) {
         var square = getSquare(position);
         square.getStyleClass().remove("selected");
+        Logger.info(String.format(" Hid the highlight of the {%d, %d} square", position.row(), position.col()));
     }
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {
