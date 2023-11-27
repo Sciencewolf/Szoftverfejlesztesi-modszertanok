@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.tinylog.Logger;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -18,6 +19,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.*;
 
+/**
+ * Handles the results of each game.
+ */
 public class GameStats {
     protected static ArrayList<String> arrayStats = new ArrayList<>();
 
@@ -26,6 +30,11 @@ public class GameStats {
 
     private static final String ICONSTATSPAGEPATH = "file:src/main/java/tablegame/icon/iconStatsPage.png";
 
+    /**
+     * Records the statistics of the game.
+     * @param player
+     * @param against
+     */
     public static void addResultIntoArrayStats(String player, String against) {
         StringBuilder sb = new StringBuilder();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
@@ -41,6 +50,7 @@ public class GameStats {
                 .append(LocalTime.now().format(dtf))
                 .append("\n"); // ⚔️ " \u2694\uFE0F" ⚔
         arrayStats.add(sb.toString());
+        Logger.info("Statistic saved.");
     }
 
     public static void writeArrayStatsIntoFile() {
@@ -52,14 +62,21 @@ public class GameStats {
             }
 
             file.write(sb.toString());
+            Logger.info("Statistics successfully save into the stats.txt file.");
             arrayStats.clear();
 
         } catch (IOException ex) {
+            Logger.warn("Unable to open the stats.txt file.");
             throw new RuntimeException(ex);
         }
     }
 
     // Stats Window
+
+    /**
+     * Handles the Statistic window opening.
+     * @throws IOException if the required file is missing.
+     */
     public void openStatsWindow() throws IOException {
         writeArrayStatsIntoFile();
 
@@ -109,6 +126,10 @@ public class GameStats {
         buttonClose.setOnMouseExited(event -> scene.setCursor(Cursor.DEFAULT));
     }
 
+    /**
+     * Writes the statistics to the window.
+     * @param scrollPane window where the statistics shown.
+     */
     private void writeStatsFromFileIntoLabel(ScrollPane scrollPane){
         try {
             Text labelStats = new Text();
@@ -119,10 +140,12 @@ public class GameStats {
             labelStats.setTranslateX(10);
 
             File file = new File(FILEPATH);
+            Logger.info("Opening stats.txt file.");
             Scanner sc = new Scanner(file);
 
             if(file.length() == 0) {
                 labelStats.setText("No Statistics! Go Play!");
+                Logger.info("No recorded games.");
             }
             else {
                 while(sc.hasNextLine()) {
@@ -134,6 +157,7 @@ public class GameStats {
             labelStats.setText(labelStats.getText());
             scrollPane.setContent(labelStats);
         } catch (IOException ex) {
+            Logger.warn("Unable to open the stats.txt file.");
             throw new RuntimeException(ex);
         }
     }
