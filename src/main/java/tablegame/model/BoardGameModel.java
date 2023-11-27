@@ -87,6 +87,10 @@ public class BoardGameModel {
         return board[p.row()][p.col()].get();
     }
 
+    /**
+     * @param p a Position type variable to locate the square
+     * @param square square enum object
+     */
     private void setSquare(Position p, Square square) {
         board[p.row()][p.col()].set(square);
     }
@@ -107,9 +111,17 @@ public class BoardGameModel {
         return  current_player.get();
     }
 
+    /**
+     * @return the color of the player
+     * (no longer used)
+     */
     public String getPlayerColour() {
         return getPlayer().showColour();
     }
+
+    /**
+     * Changes the currently active player.
+     */
     public void changePlayers() {
         if (getPlayer() == Player.PLAYER_1) {
             current_player.set(Player.PLAYER_2);
@@ -162,6 +174,13 @@ public class BoardGameModel {
         }
         return Sb.toString();
     }
+
+    /**
+     * Checks if the two squares at the given positions have the same square types.
+     * @param p1 Position of the first square
+     * @param p2 Position of the secound square
+     * @return true if they are the same type.
+     */
     private boolean checkEquality(Position p1 , Position p2) {
         if (p2.row() == -1 || p2.col() == -1 || p2.row() == 5 || p2.col() == 5) {
             return false;
