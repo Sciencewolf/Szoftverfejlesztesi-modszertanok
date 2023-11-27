@@ -14,11 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameResultWindow {
-    private static final String STYLEPATH = "file:src/main/java/tablegame/style/styleResultPage.css";
 
-    private static final String ICONPATH = "file:src/main/java/tablegame/icon/iconResultPage.png";
-
-    private static final String MENUFXMLPATH= "/fxml/menu.fxml";
+    protected static PathClass PATH = new PathClass();
 
     /**
      * Shows a pop-up window at the end of the game regarding the results of the game.
@@ -38,7 +35,7 @@ public class GameResultWindow {
             Stage win = (Stage) board.getParent().getScene().getWindow();
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource(MENUFXMLPATH));
+                root = FXMLLoader.load(getClass().getResource(PATH.getMENUFXMLPATH()));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -69,13 +66,13 @@ public class GameResultWindow {
 
         Stage stage = new Stage();
         Scene scene = new Scene(group);
-        scene.getStylesheets().add(STYLEPATH);
+        scene.getStylesheets().add(PATH.getSTYLERESULTPAGEPATH());
 
         stage.setScene(scene);
         stage.setWidth(300);
         stage.setHeight(150);
         stage.setTitle("Result");
-        stage.getIcons().add(new Image(ICONPATH));
+        stage.getIcons().add(new Image(PATH.getICONRESULTPAGEPATH()));
         stage.hide();
         stage.show();
     }

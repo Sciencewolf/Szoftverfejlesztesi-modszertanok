@@ -28,7 +28,7 @@ public class GameMenuController {
     private TextField nameTextFieldPlayerOne;
 
     @FXML
-    private TextField nameTextFieldPlayerTwo; // hasznald ezt hogyha latni akarjuk hogy ki lep
+    private TextField nameTextFieldPlayerTwo;
 
     @FXML
     private Label errorLabelText;
@@ -45,15 +45,7 @@ public class GameMenuController {
     @FXML
     private Button statsButton;
 
-    private static final String IMAGEPATH1 = "src/main/java/tablegame/images/image.png";
-
-    private static final String STYLEGAMESCENEPATH = "file:src/main/java/tablegame/style/styleGameScene.css";
-
-    private static final String ICONGAMESCENEPATH = "file:src/main/java/tablegame/icon/iconGameScene.png";
-
-    private static final String STYLEINFOPATH = "file:src/main/java/tablegame/style/styleInfo.css";
-
-    private static final String ICONINFOPAGEPATH = "file:src/main/java/tablegame/icon/iconInfoPage.png";
+    protected static PathClass PATH = new PathClass();
 
     @FXML
     private void openGameSceneButton(ActionEvent event) throws IOException {
@@ -70,8 +62,8 @@ public class GameMenuController {
             fxmlLoader.<GameSceneController>getController().setPlayerNameTwoText(nameTextFieldPlayerTwo.getText());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(STYLEGAMESCENEPATH); // except board style @fxml/gameUI.css
-            stage.getIcons().add(new Image(ICONGAMESCENEPATH));
+            scene.getStylesheets().add(PATH.getSTYLEGAMESCENEPATH()); // except board style @fxml/gameUI.css
+            stage.getIcons().add(new Image(PATH.getICONGAMESCENEPATH()));
             stage.setScene(scene);
             stage.show();
 
@@ -114,7 +106,7 @@ public class GameMenuController {
         Label label1 = new Label(sb.toString());
         label1.getStyleClass().add("label1");
 
-        Image image1 = new Image(new FileInputStream(IMAGEPATH1));
+        Image image1 = new Image(new FileInputStream(PATH.getIMAGEPATH1()));
 
         ImageView imageView1 = new ImageView(image1);
         imageView1.setX(100);
@@ -146,13 +138,13 @@ public class GameMenuController {
 
         Stage stage = new Stage();
         Scene scene = new Scene(group);
-        scene.getStylesheets().add(STYLEINFOPATH);
+        scene.getStylesheets().add(PATH.getSTYLEINFOPATH());
 
         stage.setScene(scene);
         stage.setWidth(1000);
         stage.setHeight(600);
         stage.setTitle("Game Info");
-        stage.getIcons().add(new Image(ICONINFOPAGEPATH));
+        stage.getIcons().add(new Image(PATH.getICONINFOPAGEPATH()));
         stage.hide();
         stage.show();
     }

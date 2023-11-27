@@ -25,10 +25,7 @@ import java.util.*;
 public class GameStats {
     protected static ArrayList<String> arrayStats = new ArrayList<>();
 
-    private static final String FILEPATH = "src/main/java/tablegame/stats.txt";
-    private static final String STYLEPATH = "file:src/main/java/tablegame/style/styleStats.css";
-
-    private static final String ICONSTATSPAGEPATH = "file:src/main/java/tablegame/icon/iconStatsPage.png";
+    protected static PathClass PATH = new PathClass();
 
     /**
      * Records the statistics of the game.
@@ -56,7 +53,7 @@ public class GameStats {
     public static void writeArrayStatsIntoFile() {
         StringBuilder sb = new StringBuilder();
 
-        try (FileWriter file = new FileWriter(FILEPATH, true)){
+        try (FileWriter file = new FileWriter(PATH.getFILEPATH(), true)){
             for (String item : arrayStats) {
                 sb.append(item).append("\n");
             }
@@ -103,7 +100,7 @@ public class GameStats {
 
         Stage stage = new Stage();
         Scene scene = new Scene(group);
-        scene.getStylesheets().add(STYLEPATH);
+        scene.getStylesheets().add(PATH.getSTYLESTATSPATH());
 
         // mouse event [method]
         setMouseEventsForButtonClose(scene, buttonClose);
@@ -116,7 +113,7 @@ public class GameStats {
         stage.setWidth(500);
         stage.setHeight(500);
         stage.setTitle("Statistics");
-        stage.getIcons().add(new Image(ICONSTATSPAGEPATH));
+        stage.getIcons().add(new Image(PATH.getICONSTATSPAGEPATH()));
         stage.hide();
         stage.show();
     }
@@ -140,7 +137,7 @@ public class GameStats {
             labelStats.setTranslateY(10);
             labelStats.setTranslateX(10);
 
-            File file = new File(FILEPATH);
+            File file = new File(PATH.getFILEPATH());
             Logger.info("Opening stats.txt file.");
             Scanner sc = new Scanner(file);
 
