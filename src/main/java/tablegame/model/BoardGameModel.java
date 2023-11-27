@@ -54,6 +54,7 @@ public class BoardGameModel {
      * Creates the game board.
      */
     public BoardGameModel() {
+        Logger.info("Generating board.");
         BoardInitializer();
         var index_i = 0;
         for (var row: sub_board) {
@@ -182,7 +183,8 @@ public class BoardGameModel {
      * @return true if they are the same type.
      */
     private boolean checkEquality(Position p1 , Position p2) {
-        if (p2.row() == -1 || p2.col() == -1 || p2.row() == 5 || p2.col() == 5) {
+        if (!isOnBoard(p1)|| !isOnBoard(p2)) {
+            Logger.warn("At least one of the Positions is invalid.");
             return false;
         }
         return getSquare(p1) == getSquare(p2);
@@ -194,8 +196,10 @@ public class BoardGameModel {
      * @return true if any neighbour has the same coloured piece.
      */
     private boolean checkTiles(Position p) {
-        if(checkEquality(p, new Position(p.row(), p.col()+1)) || checkEquality(p, new Position(p.row(), p.col()-1))
-                || checkEquality(p, new Position(p.row()+1, p.col())) || checkEquality(p, new Position(p.row()-1, p.col())))
+        if(checkEquality(p, new Position(p.row(), p.col()+1)) ||
+                checkEquality(p, new Position(p.row(), p.col()-1)) ||
+                checkEquality(p, new Position(p.row()+1, p.col())) ||
+                checkEquality(p, new Position(p.row()-1, p.col())))
             return true;
         return false;
     }
