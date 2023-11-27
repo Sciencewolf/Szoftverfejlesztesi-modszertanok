@@ -13,11 +13,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
+import org.tinylog.Logger;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Handles the interactions at the main menu.
+ */
 public class GameMenuController {
 
     @FXML
@@ -76,6 +80,7 @@ public class GameMenuController {
                 try {
                     openGameInfo();
                 } catch (IOException ex) {
+                    Logger.warn("Couldn't open the information window.");
                     throw new RuntimeException(ex);
                 }
             });
@@ -92,6 +97,11 @@ public class GameMenuController {
     }
 
     // game info content
+
+    /**
+     * Creates the content of the information window.
+     * @throws FileNotFoundException if the necessary files not found.
+     */
     @FXML
     public static Group getContentInsideInfoWindow() throws FileNotFoundException {
         StringBuilder sb = new StringBuilder()
@@ -119,14 +129,19 @@ public class GameMenuController {
         buttonClose.setOnAction(event -> {
             Stage stage = (Stage) buttonClose.getScene().getWindow();
             stage.close();
+            Logger.info("Closing the game information window.");
         });
 
         return new Group(imageView1, label1, buttonClose);
     }
 
     // Game Info window
+    /**
+     * Handles the game information pop-up window.
+     */
     @FXML
     private void openGameInfo() throws IOException {
+        Logger.info("Opened information window.");
         Group group = getContentInsideInfoWindow();
 
         Stage stage = new Stage();
@@ -146,6 +161,7 @@ public class GameMenuController {
     @FXML
     private void closeGameInfo() {
         Stage stage = (Stage) closeGameInfo.getScene().getWindow();
+        Logger.info("Closing the game information window.");
         stage.close();
     }
 
@@ -153,9 +169,11 @@ public class GameMenuController {
     @FXML
     public void openStatsWindow() throws IOException {
         try {
+            Logger.info("Opened Statistics window.");
             GameStats gm = new GameStats();
             gm.openStatsWindow();
         } catch (IOException ex) {
+            Logger.warn("Couldn't open the Statistics window.");
             throw new RuntimeException(ex);
         }
     }
@@ -165,5 +183,6 @@ public class GameMenuController {
     private void closeMainWindow() {
         Stage stage = (Stage) closeMenuButton.getScene().getWindow();
         stage.close();
+        Logger.info("Exiting...");
     }
 }

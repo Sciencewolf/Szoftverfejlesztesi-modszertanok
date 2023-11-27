@@ -93,6 +93,7 @@ public class GameStats {
         buttonClose.setTranslateY(400);
         buttonClose.setOnAction(e -> {
             Stage stage = (Stage) buttonClose.getScene().getWindow();
+            Logger.info("Closing Statistics window.");
             stage.close();
         });
 
