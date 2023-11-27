@@ -148,7 +148,7 @@ public class BoardGameModel {
      * @return true if it is on the board
      */
     public Boolean isOnBoard(Position p) {
-        return p.col()>=0 && p.col()<=BOARD_SIZE && p.row()>=0 && p.row()<=BOARD_SIZE;
+        return p.col()>=0 && p.col()<BOARD_SIZE && p.row()>=0 && p.row()<BOARD_SIZE;
     }
 
     /**
@@ -195,7 +195,7 @@ public class BoardGameModel {
 
     /**
      * Checks if the four neighbouring squares have the same color piece.
-     * @param p the choosen sqare's position.
+     * @param p the chosen square's position.
      * @return true if any neighbour has the same coloured piece.
      */
     private boolean checkTiles(Position p) {
