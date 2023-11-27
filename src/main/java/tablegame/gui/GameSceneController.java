@@ -163,7 +163,7 @@ public class GameSceneController {
     private void hideSelection(Position position) {
         var square = getSquare(position);
         square.getStyleClass().remove("selected");
-        Logger.info(String.format(" Hid the highlight of the {%d, %d} square", position.row(), position.col()));
+        Logger.info(String.format("Hid the highlight of the {%d, %d} square", position.row(), position.col()));
     }
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {

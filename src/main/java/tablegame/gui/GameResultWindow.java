@@ -20,6 +20,9 @@ public class GameResultWindow {
 
     private static final String MENUFXMLPATH= "/fxml/menu.fxml";
 
+    /**
+     * Shows a pop-up window at the end of the game regarding the results of the game.
+     */
     @FXML
     public void createResultWindow(GridPane board, String winnerName, String against) {
         Text label = new Text("Winner: " + winnerName);
