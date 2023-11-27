@@ -152,7 +152,7 @@ public class BoardGameModel {
     }
 
     /**
-     * Handles the placing of the pieces, and prepares the next player's turn.
+     * Handles the placing of the pieces, checks if the winner is decided, and prepares the next player's turn.
      * @param pos which position the piece placed.
      */
     public void move(Position pos) {
@@ -161,6 +161,9 @@ public class BoardGameModel {
             case PLAYER_2 -> setSquare(pos, Square.BLUE);
         }
         Logger.info("Game piece successfully placed.");
+
+        Logger.info("Checking if end of game.");
+        goalCheck(pos);
         changePlayers();
     }
 
