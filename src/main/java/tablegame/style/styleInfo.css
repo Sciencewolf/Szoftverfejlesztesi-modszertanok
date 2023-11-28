@@ -12,11 +12,56 @@
 .label1 {
     -fx-font-size: 18px;
     -fx-text-fill: black;
-    -fx-translate-x: 10;
-    -fx-translate-y: 30;
+    -fx-translate-x: 60;
+    -fx-translate-y: 80;
+    -fx-background-color: white; /* Téglalap háttérszíne */
+    -fx-background-radius: 10; /* Kerekített sarkok */
+    /*-fx-border-color: #2ecc71; /* Border színe */
+    -fx-border-width: 2; /* Border vastagsága */
+    -fx-padding: 10; /* Belső padding */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10, 0 , 0 , 1 ); /* Árnyékolás hozzáadása */
+
 }
+
+.label2 {
+    -fx-font-size: 25px;
+    -fx-text-alignment: center; /* Szöveg középre igazítása */
+    -fx-translate-x: 400;
+    -fx-translate-y: 10;
+
+    -fx-background-color: #2ecc71; /* Gomb színe */
+    -fx-text-fill: #ffffff; /* Gomb szövegszíne */
+    -fx-background-radius: 30; /* Kicsit elnyújtott kerekítés */
+
+    /* Árnyékolás hozzáadása */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 10, 0 , 0 , 1 );
+    -fx-padding: 10;
+
+}
+
 
 .imageView1 {
     -fx-translate-x: 250;
-    -fx-translate-y: 150;
+    -fx-translate-y: 190;
+}
+
+
+.buttonClose {
+    -fx-background-color: #e74c3c; /* Gomb színe */
+    -fx-text-fill: #fff; /* Fehér szöveg */
+    -fx-font-size: 16px;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+
+
+/* Responsiveness for smaller screens */
+@media only screen and (max-width: 600px) {
+
+    .buttonClose {
+        -fx-font-size: 14px;
+        -fx-padding: 6 12;
+    }
 }
