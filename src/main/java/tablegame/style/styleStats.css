@@ -3,3 +3,63 @@
     -fx-cursor: hand;
     -fx-text-fill: white;
 }
+
+/* styles.css */
+
+.root {
+    -fx-background-color: #3498db; /* Háttérszín */
+}
+
+.scrollPane {
+    -fx-background-color: #3498db; /* ScrollPane háttérszíne */
+}
+
+.buttonClose {
+    -fx-background-color: #2ecc71; /* Gomb színe */
+    -fx-text-fill: #ffffff; /* Gomb szövegszíne */
+    -fx-font-size: 16px; /* Gomb betűmérete */
+    -fx-background-radius: 15; /* Gomb lekerekítése */
+}
+.mainStatsWindow {
+    -fx-background-color: #3498db; /* Háttérszín */
+}
+
+
+.label {
+    -fx-text-fill: #ffffff; /* Címke szövegszíne */
+    -fx-font-size: 20px; /* Címke betűmérete */
+}
+
+
+@media only screen and (max-width: 600px) {
+    /* Stílusok a kisebb kijelzőkre */
+    .mainStatsWindow {
+        -fx-background-color: #3498db; /* Háttérszín */
+    }
+
+    .buttonClose {
+        -fx-font-size: 14px;
+    }
+
+    .scrollPane {
+        -fx-background-color:#3498db;
+    }
+
+    .label {
+        -fx-font-size: 16px;
+    }
+    /* styles.css */
+
+    /* ... */
+
+    .evenMatch {
+        -fx-background-color: #ecf0f1; /* Páros háttérszín */
+    }
+
+    .oddMatch {
+        -fx-background-color: #bdc3c7; /* Páratlan háttérszín */
+    }
+
+    /* ... */
+
+}
