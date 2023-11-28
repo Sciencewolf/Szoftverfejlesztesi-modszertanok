@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -103,6 +104,9 @@ public class GameMenuController {
                 .append("\namely négy szomszédosan kapcsolódik egy másik, saját jelet tartalmazó mezőhöz." )
                 .append("\nEbben az esetben a játékos veszít.");
 
+        Label label2 = new Label("Játék Szabályzat");
+        label2.getStyleClass().add("label2");
+
         Label label1 = new Label(sb.toString());
         label1.getStyleClass().add("label1");
 
@@ -124,7 +128,7 @@ public class GameMenuController {
             Logger.info("Closing the game information window.");
         });
 
-        return new Group(imageView1, label1, buttonClose);
+        return new Group(imageView1,label2, label1, buttonClose);
     }
 
     // Game Info window
@@ -139,6 +143,7 @@ public class GameMenuController {
         Stage stage = new Stage();
         Scene scene = new Scene(group);
         scene.getStylesheets().add(PATH.getSTYLEINFOPATH());
+        scene.setFill(Color.web("#3498db")); // Háttérszín beállítása
 
         stage.setScene(scene);
         stage.setWidth(1000);
