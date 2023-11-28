@@ -100,6 +100,8 @@ public class GameStats {
 
         Stage stage = new Stage();
         Scene scene = new Scene(group);
+        scene.setFill(Color.web("#3498db")); // Háttérszín beállítása
+
         scene.getStylesheets().add(PATH.getSTYLESTATSPATH());
 
         // mouse event [method]
