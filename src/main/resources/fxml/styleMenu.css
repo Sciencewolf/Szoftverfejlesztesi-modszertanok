@@ -67,3 +67,7 @@
         -fx-font-size: 16px;
     }
 }
+
+#startGameButton:hover, #informationButton:hover, #statsButton:hover, #closeMenuButton:hover {
+    -fx-cursor: hand;
+}

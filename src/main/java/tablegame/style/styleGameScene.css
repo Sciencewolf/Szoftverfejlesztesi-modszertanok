@@ -3,6 +3,7 @@
     -fx-translate-x: 30;
     -fx-translate-y: 5;
     -fx-font-style: italic;
+    -fx-font-weight: bold;
 }
 
 .playerNameTwoText {
@@ -10,4 +11,9 @@
     -fx-translate-x: 30;
     -fx-translate-y: 45;
     -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+#main {
+    -fx-background-color: #3498db;
 }

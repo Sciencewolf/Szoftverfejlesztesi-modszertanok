@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="445.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tablegame.gui.GameSceneController">
+<AnchorPane prefHeight="445.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/19" fx:id="main" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tablegame.gui.GameSceneController">
    <children>
       <GridPane fx:id="board" layoutX="14.0" layoutY="95.0" prefHeight="325.0" prefWidth="347.0" stylesheets="@gameUI.css">
         <columnConstraints>
@@ -27,7 +27,7 @@
       </GridPane>
        <GridPane>
            <Label fx:id="playerNameOneText" styleClass="playerNameOneText" text="Label" />
-           <Label fx:id="playerNameTwoText" styleClass="playerNameTwoText" text="Turn: " />
+           <Label fx:id="playerNameTwoText" styleClass="playerNameTwoText" text="Turn:  " />
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>

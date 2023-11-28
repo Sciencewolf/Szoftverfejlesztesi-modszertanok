@@ -110,9 +110,11 @@ public class GameSceneController {
     private void getNextPlayerText(){
         BoardGameModel.Player currentPlayer = model.getPlayer();
         if (currentPlayer == BoardGameModel.Player.PLAYER_2){
-            nextPlayerText.setText("Blue is next");
+            nextPlayerText.setText(" Blue is next");
+            nextPlayerText.setStyle("-fx-text-fill: blue;-fx-font-weight: bold;");
         }else{
-            nextPlayerText.setText("Red is next");
+            nextPlayerText.setText(" Red is next");
+            nextPlayerText.setStyle("-fx-text-fill: #D2042D;-fx-font-weight: bold;");
         }
     }
 

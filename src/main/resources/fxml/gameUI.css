@@ -5,6 +5,6 @@
 .state {
     -fx-alignment: center;
     -fx-translate-x: 50;
-    -fx-background-color: black;
     -fx-padding: 5px;
+    -fx-background-color: dimgrey;
 }
